@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use App\Models\Type;
 use Illuminate\Support\Str;
 
 
@@ -25,7 +26,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $types = Type::all();
+        return view('admin.projects.create', compact('types'));
 
     }
 
@@ -45,7 +47,7 @@ class ProjectController extends Controller
         $project->title = $data['title'];
         $project->content = $data['content'];
         $project->slug = $data['slug'];
-
+        $project->type_id = $data['type_id'];
         $project->save();
 
         return redirect()->route('admin.projects.index')->with('message', 'Articolo creato corretamento');
@@ -65,7 +67,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.projects.edit', compact('project'));
+        $types = Type::all();
+        return view('admin.projects.edit', compact('project', 'types'));
 
     }
 

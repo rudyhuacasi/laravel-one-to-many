@@ -12,6 +12,7 @@ class Project extends Model
         'title',
         'content',
         'slug',
+        'type_id'
         // Agrega aquí otros campos que deban ser asignados masivamente
     ];
     public function Type()
