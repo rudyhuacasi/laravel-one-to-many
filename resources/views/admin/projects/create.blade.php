@@ -33,6 +33,17 @@
             <label for="exampleFormControlTextarea1" class="form-label">Contenuto</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" name="content"></textarea>
         </div>
+        <div class="mb-3">
+            <label for="type_id" class="form-label">Type</label>
+            <select name="type_id" id="type_id" class="form-control">
+                <option value="">Select Type</option>
+                @foreach ($types as $type)
+                <option value="{{ $type->id }}" >
+                    {{ $type->title }}
+                </option>
+                @endforeach
+            </select>
+        </div>
         <button class="btn btn-primary">Crea nuovo project</button>
     </form>
 
