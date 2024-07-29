@@ -14,4 +14,8 @@ class Project extends Model
         'slug',
         // Agrega aquí otros campos que deban ser asignados masivamente
     ];
+    public function Type()
+    {
+        return $this->belongsTo(Type::class);
+    }
 }
